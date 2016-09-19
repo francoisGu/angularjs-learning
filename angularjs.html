@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- This script is for angularjs -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js" type="text/javascript"></script>
+		<!-- This is for jQuery -->
+		<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" type="text/javascript"></script>
+		<!-- This is for bootstript -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<script src="js/ngscript.js"></script>
+		<link rel="stylesheet" href="css/ngstyle.css">
+
+		<title>Angularjs Demo</title>
+	</head>
+	<body ng-app="myapp">
+		
+		<section class="col-sm-12">
+			<header class="col-sm-12" id="section1">
+				<h1>First App</h1>
+			</header>
+			
+			<div class="container col-sm-12">
+				10 + 20 = {{10+20}}
+				<p>Enter your Name: <input type="text" placeholder="Frank" ng-model="name"></p>
+				<p>Hellow <span ng-bind="name"></span> {{name}}!</p>
+			</div>
+
+			<div class="container col-sm-12">
+				<table border="0">
+					<tr>
+						<td><input class="checkbox" type="checkbox" name="" value="" ng-model="enableDisableButton">enable bt</td>
+						<td><button class="btn" ng-disabled="!enableDisableButton">Click me!</button></td>
+					</tr>
+					<tr>
+						<td><input class="checkbox" type="checkbox" name="showHide" ng-model="showHide">Show Button</td>
+						<td><button class="btn" ng-show="showHide">Click Me!</button></td>
+					</tr>
+					<tr>
+						<td><p>Total click: {{clickCounter}}</p></td>
+						<td><button class="btn" ng-click="clickCounter = clickCounter + 1"> Click me!</button></td>
+					</tr>
+					
+				</table>				
+			</div>
+		</section>
+		
+
+		<section class="col-sm-12 container" id="section2">
+			<header>
+				<h1>Cost info</h1>
+			</header>
+			<div>
+				<form>
+					<p>Form</p>
+					<table>
+						<tr>
+							<td class="col-md-2">First Name: </td>
+							<td class="col-md-4"><input type="text" ng-model="firstName" required></td>
+						</tr>
+						<tr>
+							<td class="col-md-2">Last Name: </td>
+							<td class="col-md-4"><input type="text" ng-model="lastName" required></td>
+						</tr>
+						<tr>
+							<td class="col-md-2">Quantity: </td>
+							<td class="col-md-4"><input type="text" ng-model="quantity" required></td>
+						</tr>
+						<tr>
+							<td class="col-md-2">Cost: </td>
+							<td class="col-md-4"><input type="text" ng-model="cost" required></td>
+						</tr>
+						<tr>
+							<td class="col-md-2"><button class="btn" value="Result" 
+								ng-click="message = firstName + ' ' + lastName + ' has to pay ' + quantity*cost ">Ticket</button></td>
+							<td> {{ message }}</td>
+						</tr>
+
+					</table>
+				</form>
+				
+			</div>
+			
+		</section>
+
+		<section class="col-sm-12 container" id="controllerDemo">
+			<header class="col-sm-12">
+				<h1>Example with seperate js file</h1>
+			</header><!-- /header -->
+			<div class="col-sm-12" ng-controller="demoController">
+				<p>{{message}}</p>
+			</div>
+		</section>
+
+		<section class="col-sm-12">
+			<header id="header" class="col-sm-12">
+				<h1>Employees Info</h1>
+			</header><!-- /header -->
+			<div class="col-sm-12" ng-controller="demoController">
+				<label>Search first name:  </label>
+				<input class="input-sm" type="text" placeholder="First Name" ng-model="searchText.firstName"/>
+				<table class="table">
+					<caption>table of Employeers Info</caption>
+					<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Gender</th>
+							<th>Salary</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="employee in employees | filter:searchText | orderBy: '-salary'">
+							<td>{{employee.firstName | lowercase}} </td>
+							<td>{{employee.lastName | uppercase}}</td>
+							<td>{{employee.gender}}</td>
+							<td>{{employee.salary | currency:"AUD "}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			
+		</section>
+
+		<section class="col-sm-12" id="controlStates">
+			<div>
+				
+			</div>
+			
+		</section>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
